@@ -48,7 +48,7 @@ async def on_message(message):
       await message.reply(completion.choices[0].message.content.strip())
     except Exception as e:
        print(e)
-       await message.reply("Hey can you reprompt me? I have encountered a bug")
+       await message.reply(f"Hey can you reprompt me? I have encountered a bug... here's the error in its entirety: ```{e}```")
        return
 
 dc_client.run(dc_token)
