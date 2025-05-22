@@ -5,6 +5,7 @@ import os
 
 dotenv.load_dotenv()
 dc_token = os.getenv("DC_TOKEN")
+model_setting = os.getenv("AI_MODEL")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -18,6 +19,7 @@ client = OpenAI(
 @dc_client.event
 async def on_ready():
   print(f"logged in as {dc_client.user}")
+  await dc_client.change_presence(activity=discord.Game(name="talk to me by using bottlecap at the start of the message"))
 
 @dc_client.event
 async def on_message(message):
@@ -35,7 +37,7 @@ async def on_message(message):
     try:
       completion = client.chat.completions.create(
         extra_body={},
-        model="google/gemma-2-9b-it:free",
+        model=model_setting,
         messages=[
           {
             "role": "user",
