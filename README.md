@@ -1,2 +1,2 @@
 # bottlecap-ai
-a bad clone of the clyde discord bot
+a bad but "customizable" clone of the clyde discord bot
